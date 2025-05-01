@@ -1,0 +1,22 @@
+repos:
+-   repo: local
+    hooks:
+    -   id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args: [
+            "-rn", # Only display messages
+            "-sn", # Dont't display the score
+            "--rcfile=.pylintrc", # Use the custom config file
+            "--load-plugins=pylint.extensions.docparams", # Load the docparams plugin
+        ]
+-   repo: local
+    hooks:
+    -   id: requirements
+        name: requirements
+        entry: bash -c 'venv/bin/pip3 freeze > requirements.txt; git add requirements.txt'
+        language: system
+        pass_filenames: false
+        stages: [commit]
