@@ -1,10 +1,11 @@
 from src.infra.db.settings.connection import DBConnectionHandler
 from src.infra.db.entities.users import Users as UsersEntity
+from src.data.interfaces.users_repository import UsersRepositoryInterface
+from src.domain.models.user import User
 
-class UsersRepository:
+class UsersRepository(UsersRepositoryInterface):
 
-    @classmethod
-    def insert_user(cls, first_name: str, last_name: str, age: int) -> None:
+    def insert_user(self, first_name: str, last_name: str, age: int) -> None:
         """
         Insert a new user into the database.
         """
@@ -19,8 +20,7 @@ class UsersRepository:
             finally:
                 db.session.close()
 
-    @classmethod
-    def get_user_by_id(cls, user_id: int) -> UsersEntity:
+    def get_user_by_id(self, user_id: int) -> User:
         """
         Retrieve a user by their ID.
         """
@@ -38,8 +38,7 @@ class UsersRepository:
             finally:
                 db.session.close()
 
-    @classmethod
-    def get_user_by_first_name(cls, first_name: str) -> UsersEntity:
+    def get_user_by_first_name(self, first_name: str) -> User:
         """
         Retrieve a user by their First Name.
         """
