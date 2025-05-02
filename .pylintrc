@@ -9,6 +9,7 @@ disable=
       C0209, # Consider-using-f-string
       R0903, # Too few public methods
       W0622, # Redefining built-in 'name'
+      W0719, # Raising too general exception Exception
 
 # Analyse import fallback blocks. This can be used to support both Python 2 and
 # 3 compatible code, which means that the block might have code that exists
